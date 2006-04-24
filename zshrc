@@ -13,7 +13,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 unsetopt cdable_vars
 unsetopt correctall
-source ~/work/dev/work_utils.sh
+workrc=/home/abraithwaite/work/dev/work_utils.sh && test -f $workrc && source $workrc
+fedorarc=/home/abraithwaite/.fedorarc.sh && test -f $fedorarc && source $fedorarc
 
 # ENV
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
@@ -37,7 +38,6 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 # Make autocompletion look the same as ls
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-fedorarc=/home/abraithwaite/.fedorarc.sh && test -f $fedorarc && source $fedorarc
 #rvm stuff for rails
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
