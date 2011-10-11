@@ -96,6 +96,10 @@ endif
 "        \ | wincmd p | diffthis
 "endif
 "
+
+
+"Begin My Settings-
+
 set filetype=on
 
 filetype plugin indent on
@@ -106,6 +110,7 @@ set smartindent
 set tabpagemax=100
 set showmatch
 
+"default spacings
 set ai
 set sw=4
 set ts=4
