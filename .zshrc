@@ -41,3 +41,6 @@ alias backupmirrors="sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.b
 #
 #rvm stuff for railstutorials
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function'
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

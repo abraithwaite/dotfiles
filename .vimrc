@@ -126,3 +126,8 @@ au FileType eruby set ts=2
 "CSS
 au FileType css set sw=2
 au FileType css set ts=2
+
+" Store swap files in fixed location, not in the current directory.
+set dir=~/.vimswap//,var/tmp//,/tmp//,.
+set undodir=~/.vimundo//,var/tmp//,/tmp//,.
+set backupdir=~/.vimbackup//,var/tmp//,tmp//,.
