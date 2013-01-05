@@ -19,5 +19,5 @@
     changed = yellow
     untracked = cyan
 [alias]
-	in = git log ..@{u}
-	out = git log @{u}..
+	in = log ..@{u}
+	out = log @{u}..
