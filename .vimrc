@@ -4,8 +4,8 @@ set filetype=on
 filetype plugin indent on
 colorscheme molokai
 
-set guioptions-=m "remove menu
-set guioptions-=T "remove toolbar
+set guioptions-=m "remove menu gvim
+set guioptions-=T "remove toolbar gvim
 set number
 set expandtab
 "set smartindent
@@ -42,9 +42,7 @@ set dir=~/.vimswap//,var/tmp//,/tmp//,.
 set undodir=~/.vimundo//,var/tmp//,/tmp//,.
 set backupdir=~/.vimbackup//,var/tmp//,tmp//,.
 
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+set t_Co=256
 
 map <C-l> :tabnext<CR>
 map <C-h> :tabprev<CR>
