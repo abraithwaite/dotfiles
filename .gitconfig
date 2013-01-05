@@ -1,0 +1,23 @@
+[user]
+	name = Alan Braithwaite
+	email = abraithwaite@mail.csuchico.edu
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = magenta bold
+    frag = cyan bold
+    old = red
+    new = green
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[alias]
+	in = git log ..@{u}
+	out = git log @{u}..
