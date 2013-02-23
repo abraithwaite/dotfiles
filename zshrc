@@ -21,8 +21,8 @@ export EDITOR=vim
 
 alias c="clear"
 alias la="ls -a"
-alias vi="vim -p"
-alias vim="vim -p"
+alias mv="mv -i"
+alias vim="vim -O"
 alias py="/usr/bin/python"
 alias fdate="date +'%y-%m-%d'"
 alias gdb="gdb -q"
