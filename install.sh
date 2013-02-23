@@ -2,7 +2,7 @@
 
 
 DIR="$( dirname "${BASH_SOURCE[0]}" )"
-FILES="pdbrc zshrc bashrc gitconfig gdbrc"
+FILES="pdbrc zshrc bashrc gitconfig hgrc"
 echo $DIR
 for file in $FILES
 do
@@ -10,6 +10,6 @@ do
     then
         mv ~/.$file{,.bak}
     fi
-    ln -s $(pwd)/$file ~/.$file
+    ln -s $DIR/$file ~/.$file
 done
 
