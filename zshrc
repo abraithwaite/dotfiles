@@ -13,8 +13,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 unsetopt cdable_vars
 unsetopt correctall
-workrc=/home/abraithwaite/work/dev/work_utils.sh && test -f $workrc && source $workrc
-fedorarc=/home/abraithwaite/.fedorarc.sh && test -f $fedorarc && source $fedorarc
+workrc=$HOME/work/dev/work_utils.sh && test -f $workrc && source $workrc
+fedorarc=$HOME/.fedorarc.sh && test -f $fedorarc && source $fedorarc
+echo "Updating .vim and .dotfiles"
+update=$HOME/.dotfiles/update_configs.sh && test -f $update && $update > /tmp/update.log 2>&1 & disown
 
 # ENV
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
@@ -41,3 +43,4 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #rvm stuff for rails
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
