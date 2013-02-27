@@ -15,8 +15,9 @@ unsetopt cdable_vars
 unsetopt correctall
 workrc=$HOME/work/dev/work_utils.sh && test -f $workrc && source $workrc
 fedorarc=$HOME/.fedorarc.sh && test -f $fedorarc && source $fedorarc
-echo "Updating .vim and .dotfiles"
-update=$HOME/.dotfiles/update_configs.sh && test -f $update && $update > /tmp/update.log 2>&1 & disown
+#This was a bad idea.
+#echo "Updating .vim and .dotfiles"
+#update=$HOME/.dotfiles/update_configs.sh && test -f $update && $update > /tmp/update.log 2>&1 & disown
 
 # ENV
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
