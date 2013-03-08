@@ -2,6 +2,7 @@
 
 
 DIR="$( dirname "${BASH_SOURCE[0]}" )"
+DIR="$( cd "$DIR" && pwd )"
 FILES="pdbrc zshrc bashrc gitconfig hgrc"
 echo $DIR
 for file in $FILES
