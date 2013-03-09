@@ -3,7 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#source $ZSH/oh-my-zsh.sh
 unsetopt cdable_vars
 unsetopt correctall
 workrc=$HOME/work/dev/work_utils.sh && test -f $workrc && source $workrc
