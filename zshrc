@@ -1,16 +1,9 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-ZSH_THEME="steeef"
-
-# Comment this out to enable weekly auto-update checks
-DISABLE_AUTO_UPDATE=true
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 unsetopt cdable_vars
 unsetopt correctall
 workrc=$HOME/work/dev/work_utils.sh && test -f $workrc && source $workrc
