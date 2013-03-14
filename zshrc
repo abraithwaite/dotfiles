@@ -23,8 +23,10 @@ alias fdate="date +'%y-%m-%d'"
 alias gdb="gdb -q"
 alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 alias ecenet="cd ~/work/school/networks"
+alias tmux="tmux -2"
 
 bindkey -v
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
 
+setopt autonamedirs
