@@ -12,7 +12,8 @@ fedorarc=$HOME/.fedorarc.sh && test -f $fedorarc && source $fedorarc
 #update=$HOME/.dotfiles/update_configs.sh && test -f $update && $update > /tmp/update.log 2>&1 & disown
 
 # ENV
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+export PATH=$PATH:/usr/local/go/bin
 export EDITOR=vim
 
 alias c="clear"
@@ -26,8 +27,4 @@ alias ecenet="cd ~/work/school/networks"
 bindkey -v
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
-
-#rvm stuff for rails
-#export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
