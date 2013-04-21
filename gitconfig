@@ -5,6 +5,7 @@
     branch = auto
     diff = auto
     status = auto
+    ui = true
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -21,3 +22,11 @@
 [alias]
 	in = log ..@{u}
 	out = log @{u}..
+    a = add
+    c = commit
+    d = diff
+    l = log
+    ls = log --pretty=format:'%C(cyan)%h%Creset %s %Cgreen%d%Creset'
+    s = status -sb
+    st = status
+
