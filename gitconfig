@@ -1,24 +1,29 @@
 [user]
 	name = Alan Braithwaite
-	email = abraithwaite@mail.csuchico.edu
+	email = alan.braithwaite@cyaninc.com
+
 [color]
     branch = auto
     diff = auto
     status = auto
     ui = true
+
 [color "branch"]
     current = yellow reverse
     local = yellow
     remote = green
+
 [color "diff"]
     meta = magenta bold
     frag = cyan bold
     old = red
     new = green
+
 [color "status"]
     added = green
     changed = yellow
     untracked = cyan
+
 [alias]
 	in = log ..@{u}
 	out = log @{u}..
@@ -26,7 +31,21 @@
     c = commit
     d = diff
     l = log
-    ls = log --pretty=format:'%C(cyan)%h%Creset %s %Cgreen%d%Creset'
+    ls = log --pretty=format:'%C(magenta)%h%Creset %C(yellow)%aN%Creset %C(green)%aE%Creset %C(dim)%ci%Creset\n %s %C(cyan)%d%Creset'
     s = status -sb
     st = status
 
+[merge]
+	tool = vimdiff
+
+[core]
+	editor = vim
+
+[init]
+	templatedir = ~/.git_template
+
+[annex]
+    ignore-host = github-enterprise
+    remote-url = git@intrepid
+
+    

@@ -6,4 +6,5 @@ merge = meld
 largefiles = 
 purge = 
 color =
+convert =
 

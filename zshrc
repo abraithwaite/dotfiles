@@ -5,7 +5,7 @@ fi
 
 unsetopt cdable_vars
 unsetopt correctall
-workrc=$HOME/work/dev/work_utils.sh && test -f $workrc && source $workrc
+workrc=$HOME/dev/work_utils.sh && test -f $workrc && source $workrc
 fedorarc=$HOME/.fedorarc.sh && test -f $fedorarc && source $fedorarc
 #This was a bad idea.
 #echo "Updating .vim and .dotfiles"
@@ -16,6 +16,7 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/
 export PATH=$PATH:/usr/local/go/bin
 export EDITOR=vim
 
+alias s="source"
 alias c="clear"
 alias vim="vim -O"
 alias py="/usr/bin/python"
@@ -25,9 +26,19 @@ alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 alias ecenet="cd ~/work/school/networks"
 alias tmux="tmux -2"
 alias se="source env.sh"
+if [[ -s "/usr/share/vim/vim73/macros/less.sh" ]]
+then
+    alias less="/usr/share/vim/vim73/macros/less.sh"
+fi
 
 bindkey -v
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
 
 setopt autonamedirs
+
+zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
+
+function add_group(){
+    sudo usermod -a -G $1 $2
+}
