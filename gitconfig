@@ -44,8 +44,3 @@
 [init]
 	templatedir = ~/.git_template
 
-[annex]
-    ignore-host = github-enterprise
-    remote-url = git@intrepid
-
-    
