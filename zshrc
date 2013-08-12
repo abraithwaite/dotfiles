@@ -34,6 +34,15 @@ setopt autonamedirs
 
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
+function mkcd(){
+    for last; do true; done
+    mkdir $@
+    cd $last
+    unset last
+}
 function add_group(){
     sudo usermod -a -G $1 $2
 }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export WORKON_HOME="$HOME/.venvs"

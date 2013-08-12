@@ -34,6 +34,8 @@
     ls = log --pretty=format:'%C(magenta)%h%Creset %C(yellow)%aN%Creset %C(green)%aE%Creset %C(dim)%ci%Creset\n %s %C(cyan)%d%Creset'
     s = status -sb
     st = status
+    co = checkout
+    p = pull
 
 [merge]
 	tool = vimdiff
@@ -44,3 +46,5 @@
 [init]
 	templatedir = ~/.git_template
 
+[annex]
+	alwayscommit = false
