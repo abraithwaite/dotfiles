@@ -45,4 +45,9 @@ function add_group(){
 }
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source <(npm completion)
+
+# Virtualenv stuff
+venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
 export WORKON_HOME="$HOME/.venvs"
