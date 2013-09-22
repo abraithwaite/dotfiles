@@ -1,3 +1,6 @@
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/Caustic/prezto.git
+[submodule "vim"]
+	path = vim
+	url = git@github.com:Caustic/dotvim.git
