@@ -1,6 +1,6 @@
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "${ZDOTDIR:-$HOME}/.dotfiles/prezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.dotfiles/prezto/init.zsh"
 fi
 
 setopt autonamedirs
