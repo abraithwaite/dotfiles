@@ -4,12 +4,11 @@
 DIR="$( dirname "${BASH_SOURCE[0]}" )"
 DIR="$( cd "$DIR" && pwd )"
 
-FILES="ackrc bashrc gitconfig hgrc pdbrc 
+FILES="ackrc bashrc gitconfig hgrc pdbrc vim 
 tmux.conf zshrc vimrc zpreztorc vimrc zshenv"
-echo $DIR
 for file in $FILES
 do
-    if [ -f ~/.$file ]
+    if [ -e ~/.$file ]
     then
         mv ~/.$file{,.bak}
     fi
