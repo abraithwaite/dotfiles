@@ -14,7 +14,7 @@ bindkey "^?" backward-delete-char
 
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
-source <(npm completion)
+[[ -s $(which npm) ]] && source <(npm completion)
 
 workrc=$HOME/dev/work_utils.sh && test -f $workrc && source $workrc
 
