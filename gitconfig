@@ -37,15 +37,13 @@
     s = status -sb
     st = status
     co = checkout
+    cl = clone -o upstream
 
 [merge]
 	tool = vimdiff
 
 [core]
 	editor = vim
-
-[init]
-	templatedir = ~/.git_template
 
 [annex]
 	alwayscommit = false
