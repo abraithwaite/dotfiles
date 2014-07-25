@@ -11,13 +11,11 @@ unsetopt correctall
 bindkey -v
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
+bindkey "^R" backward-delete-char
 
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
 [[ -s $(which npm) ]] && source <(npm completion)
 
-workrc=$HOME/dev/work_utils.sh && test -f $workrc && source $workrc
-
 # Virtualenv stuff
 venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
-export WORKON_HOME="$HOME/.venvs"
