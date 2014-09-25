@@ -15,3 +15,7 @@ do
     ln -s $DIR/$file ~/.$file
 done
 
+# ipython has to be a special portable snowflake...
+ipython=~/.ipython/default_profile
+mkdir -p $ipython
+ln -s $DIR/ipython_config.py $ipython
