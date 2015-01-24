@@ -5,7 +5,7 @@ DIR="$( dirname "${BASH_SOURCE[0]}" )"
 DIR="$( cd "$DIR" && pwd )"
 
 FILES="ackrc bashrc gitconfig hgrc pdbrc vim 
-tmux.conf zshrc vimrc zpreztorc zshenv zprezto"
+tmux.conf zshrc vimrc zpreztorc zshenv prezto"
 for file in $FILES
 do
     if [ -e ~/.$file ]
