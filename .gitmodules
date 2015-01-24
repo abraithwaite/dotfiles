@@ -2,7 +2,3 @@
 	path = vim
 	url = https://github.com/abraithwaite/dotvim.git
 	branch = master
-[submodule "zprezto"]
-	path = zprezto
-	url = https://github.com/abraithwaite/prezto.git
-	branch = master
