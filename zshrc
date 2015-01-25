@@ -15,5 +15,7 @@ bindkey "^R" backward-delete-char
 
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
+alias tmux='tmux -2'
+
 # Virtualenv stuff
 venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
