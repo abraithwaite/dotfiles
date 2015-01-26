@@ -19,3 +19,7 @@ alias tmux='tmux -2'
 
 # Virtualenv stuff
 venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
+
+if [[ -s "$SSH_AUTH_SOCK" ]]; then
+	ln -s "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
