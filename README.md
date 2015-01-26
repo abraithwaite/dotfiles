@@ -12,3 +12,7 @@ my configuration framework. (The theme for prezto I use is steef).
 To update to the latest specified branch:
 
     git submodule update --recursive --remote
+
+Or do this:
+
+    git submodule update --init --recursive
