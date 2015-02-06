@@ -16,6 +16,7 @@ bindkey "^R" history-incremental-search-backward
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
 alias tmux='tmux -2'
+alias vim='vim -O'
 
 # Virtualenv stuff
 venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
