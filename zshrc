@@ -11,7 +11,7 @@ unsetopt correctall
 bindkey -v
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
-bindkey "^R" history-incremental-search-backward
+bindkey "^R" history-incremental-pattern-search-backward
 
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
