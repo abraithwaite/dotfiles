@@ -30,6 +30,7 @@
     a = add
     c = commit
     d = diff
+    dc = diff --cached
     f = fetch
     l = log
     ls = log --pretty=format:'%C(magenta)%h%Creset %C(yellow)%aN%Creset %C(green)%aE%Creset %C(dim)%ai%Creset\n %s %C(cyan)%d%Creset'
