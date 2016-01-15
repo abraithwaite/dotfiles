@@ -24,3 +24,10 @@ venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $ven
 if [[ -s "$SSH_AUTH_SOCK" ]]; then
 	ln -s "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
+
+function git-read-branch() {
+  git ls-tree -r $1 | grep $2 | awk '{print $3}' | xargs git cat-file blob
+}
+export GOPATH=~/Projects/golang
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export GO15VENDOREXPERIMENT=1
