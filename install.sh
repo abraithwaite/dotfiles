@@ -12,10 +12,10 @@ do
     then
         mv ~/.$file{,.bak}
     fi
-    ln -s $DIR/$file ~/.$file
+    ln -sf $DIR/$file ~/.$file
 done
 
 # ipython has to be a special portable snowflake...
 ipython=~/.ipython/default_profile
 mkdir -p $ipython
-ln -s $DIR/ipython_config.py $ipython
+ln -sf $DIR/ipython_config.py $ipython

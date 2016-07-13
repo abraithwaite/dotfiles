@@ -7,8 +7,9 @@ setopt autonamedirs
 unsetopt cdable_vars
 unsetopt correctall
 
-# Vim mode
-bindkey -v
+# emacs mode
+bindkey -e
+
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
 bindkey "^R" history-incremental-pattern-search-backward
