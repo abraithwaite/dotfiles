@@ -32,3 +32,5 @@ function git-read-branch() {
 export GOPATH=~/Projects/golang
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export GO15VENDOREXPERIMENT=1
+
+source ~/.dotfiles/dates.zsh
