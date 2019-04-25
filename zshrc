@@ -18,6 +18,7 @@ zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc'
 
 alias tmux='tmux -2'
 alias vim='vim -O'
+alias dc='docker-compose --no-ansi'
 
 # Virtualenv stuff
 venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
@@ -30,7 +31,13 @@ function git-read-branch() {
   git ls-tree -r $1 | grep $2 | awk '{print $3}' | xargs git cat-file blob
 }
 export GOPATH=~/Projects/golang
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-export GO15VENDOREXPERIMENT=1
+path=($path $GOPATH/bin)
 
 source ~/.dotfiles/dates.zsh
+
+export NVM_DIR="$HOME/.nvm"
+# source /usr/local/opt/nvm/nvm.sh
+
+source ~/.workenv
+
+export HOMEBREW_NO_INSTALL_CLEANUP=1

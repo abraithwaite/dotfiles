@@ -1,6 +1,6 @@
 [user]
 	name = Alan Braithwaite
-	email = alan@ipaddr.org
+	email = alan@segment.com
 
 [alias]
 	in = log ..@{u}
@@ -48,3 +48,9 @@
 	added = green
 	changed = yellow
 	untracked = cyan
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[http]
+	cookiefile = /Users/abraithwaite/.gitcookies
