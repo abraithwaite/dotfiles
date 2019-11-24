@@ -1,0 +1,4 @@
+# zsh word code files
+*.zwc
+
+tmp/
