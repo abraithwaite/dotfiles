@@ -57,3 +57,5 @@ function gomodclean() {
   chmod -R +w $GOPATH/pkg/mod/$1
   rm -r $GOPATH/pkg/mod/$1
 }
+
+unsetopt LIST_BEEP
