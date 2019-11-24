@@ -59,3 +59,4 @@ function gomodclean() {
 }
 
 unsetopt LIST_BEEP
+unsetopt CORRECT
