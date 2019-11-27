@@ -33,25 +33,21 @@ function git-read-branch() {
 
 source ~/.dotfiles/dates.zsh
 
-export NVM_DIR="$HOME/.nvm"
-# source /usr/local/opt/nvm/nvm.sh
-
-source ~/.workenv
-
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 source <(kubectl completion zsh)
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/init-nvm.sh
+# source /usr/local/opt/nvm/nvm.sh
 
 export GOPATH=~/Projects/golang
 path=($path $GOPATH/bin)
 
-source $GOPATH/src/github.com/segmentio/k/k.sh
 export GO111MODULE=on
-export GOPRIVATE=github.com/segment
+export GOPRIVATE=github.com/segment*
 
 function gomodclean() {
   chmod -R +w $GOPATH/pkg/mod/$1
@@ -60,3 +56,5 @@ function gomodclean() {
 
 unsetopt LIST_BEEP
 unsetopt CORRECT
+
+source ~/.workenv

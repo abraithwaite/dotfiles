@@ -19,18 +19,18 @@ zstyle ':prezto:*:*' color 'yes'
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'tmux' \
-  'directory' \
-  'spectrum' \
-  'utility' \
   'completion' \
-  'python' \
+  'directory' \
+  'editor' \
+  'environment' \
+  'history' \
   'prompt' \
-  'ruby'
+  'python' \
+  'ruby' \
+  'spectrum' \
+  'terminal' \
+  'tmux' \
+  'utility'
 
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
