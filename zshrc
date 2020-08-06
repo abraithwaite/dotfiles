@@ -58,3 +58,5 @@ unsetopt LIST_BEEP
 unsetopt CORRECT
 
 source ~/.workenv
+
+alias cat='bat --style=plain,snip'
