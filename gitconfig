@@ -16,7 +16,8 @@
 	m = merge
 	s = status -sb
 	st = status
-	co = checkout
+	co = "!f() { echo \"$@\" | sed -E 's#-b\\s?(\\w+)#-b alan/\\1#' | xargs git checkout ; }; f"
+	; co = checkout
 	cl = clone -o upstream
 
 [merge]
@@ -55,3 +56,7 @@
 
 [http]
 	cookiefile = /Users/abraithwaite/.gitcookies
+[credential]
+	helper = cache --timeout=3600
+[pull]
+	ff = only
