@@ -1,7 +1,7 @@
 [submodule "vim"]
 	path = vim
-	url = git@github.com:abraithwaite/dotvim.git
+	url = https://github.com/abraithwaite/dotvim.git
 	branch = master
 [submodule "prezto"]
 	path = prezto
-	url = git@github.com:abraithwaite/prezto.git
+	url = https://github.com/abraithwaite/prezto.git
