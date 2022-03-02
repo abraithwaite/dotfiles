@@ -1,6 +1,10 @@
 dotfiles
 ========
 
+Dependencies:
+nvim bat git curl
+
+
 This is my collection of dotfiles and configurations.  Feel free to use them.
 
 I've also got a [dotvim](https://github.com/abraithwaite/dotvim) repository because

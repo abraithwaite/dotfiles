@@ -19,3 +19,5 @@ done
 ipython=~/.ipython/default_profile
 mkdir -p $ipython
 ln -sf $DIR/ipython_config.py $ipython
+
+ln -sf $DIR/nvim $HOME/.config/nvim

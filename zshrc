@@ -17,7 +17,7 @@ bindkey "^R" history-incremental-pattern-search-backward
 zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
 alias tmux='tmux -2'
-alias vim='vim -O'
+alias vim='nvim -O'
 alias dc='docker-compose --no-ansi'
 
 # Virtualenv stuff
@@ -34,13 +34,21 @@ function git-read-branch() {
 source ~/.dotfiles/dates.zsh
 
 export HOMEBREW_NO_INSTALL_CLEANUP=1
-source <(kubectl completion zsh)
+
+if (( $+commands[kubectl] ))
+then
+	source <(kubectl completion zsh)
+fi
+
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
 export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/init-nvm.sh
+if [[ -f /usr/share/nvm/init-nvm.sh ]]
+then
+	source /usr/share/nvm/init-nvm.sh
+fi
 # source /usr/local/opt/nvm/nvm.sh
 
 export GOPATH=~/Projects/golang
@@ -57,6 +65,12 @@ function gomodclean() {
 unsetopt LIST_BEEP
 unsetopt CORRECT
 
-source ~/.workenv
+if [[ -f ~/.workenv ]]
+then
+	source ~/.workenv
+fi
 
-alias cat='bat --style=plain,snip'
+if (( $+commands[bat] ))
+then
+	alias cat='bat --style=plain,snip'
+fi
