@@ -25,6 +25,7 @@
 
 [core]
 	editor = vim
+	hooksPath = /dev/null
 
 [transfer]
 	fsckObjects = true
