@@ -1,6 +1,6 @@
 [user]
 	name = Alan Braithwaite
-	email = alan@segment.com
+	email = alan@ipaddr.org
 
 [alias]
 	in = log ..@{u}
@@ -61,3 +61,5 @@
 	helper = cache --timeout=3600
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
