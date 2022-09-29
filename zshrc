@@ -6,6 +6,8 @@ fi
 setopt autonamedirs
 unsetopt cdable_vars
 unsetopt correctall
+unsetopt LIST_BEEP
+unsetopt CORRECT
 
 # emacs mode
 bindkey -e
@@ -13,8 +15,6 @@ bindkey -e
 # for standard backspace while in insertion mode
 bindkey "^?" backward-delete-char
 bindkey "^R" history-incremental-pattern-search-backward
-
-zstyle ':completion:*:*:vi(m|):*' ignored-patterns '*.pyc' 
 
 alias tmux='tmux -2'
 alias vim='nvim -O'
@@ -40,6 +40,11 @@ then
 	source <(kubectl completion zsh)
 fi
 
+if (( $+commands[bat] ))
+then
+	alias cat='bat --style=plain,snip'
+fi
+
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
@@ -49,28 +54,18 @@ if [[ -f /usr/share/nvm/init-nvm.sh ]]
 then
 	source /usr/share/nvm/init-nvm.sh
 fi
-# source /usr/local/opt/nvm/nvm.sh
 
 export GOPATH=~/Projects/golang
-path=($path $GOPATH/bin)
-
-export GO111MODULE=on
-export GOPRIVATE=github.com/segment*
+path=(/usr/local/go/bin $path $GOPATH/bin)
 
 function gomodclean() {
   chmod -R +w $GOPATH/pkg/mod/$1
   rm -r $GOPATH/pkg/mod/$1
 }
 
-unsetopt LIST_BEEP
-unsetopt CORRECT
-
 if [[ -f ~/.workenv ]]
 then
 	source ~/.workenv
 fi
 
-if (( $+commands[bat] ))
-then
-	alias cat='bat --style=plain,snip'
-fi
+export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
