@@ -31,6 +31,15 @@ function git-read-branch() {
   git ls-tree -r $1 | grep $2 | awk '{print $3}' | xargs git cat-file blob
 }
 
+function clone-image() {
+	local imgname=$(echo $1 | cut -d':' -f1 | xargs basename)
+	local imgver=$(echo $1 | cut -d':' -f2-)
+	echo "cloning $imgname:$imgver"
+	docker pull $1
+	docker tag $1 registry.gitlab.com/abraithwaite/i/$imgname:$imgver
+	docker push registry.gitlab.com/abraithwaite/i/$imgname:$imgver
+}
+
 source ~/.dotfiles/dates.zsh
 
 export HOMEBREW_NO_INSTALL_CLEANUP=1
@@ -69,3 +78,4 @@ then
 fi
 
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
+export SOPS_AGE_KEY_FILE=$HOME/.config/sops/key.txt
