@@ -87,7 +87,7 @@ main() {
     info "Bootstrap complete! 🎉"
 }
 
-# Run if executed directly
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+# Run if executed directly (works with curl | bash)
+if [[ "${BASH_SOURCE[0]:-$0}" == "${0}" ]]; then
     main "$@"
 fi
