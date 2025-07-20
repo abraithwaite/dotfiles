@@ -1,6 +1,6 @@
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.prezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.prezto/init.zsh"
+if [[ -s "${ZDOTDIR:-$HOME}/.config/prezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.config/prezto/init.zsh"
 fi
 
 setopt autonamedirs
@@ -20,8 +20,10 @@ alias tmux='tmux -2'
 alias vim='nvim -O'
 alias dc='docker-compose --no-ansi'
 
-# Virtualenv stuff
-venvwrap=/usr/local/bin/virtualenvwrapper.sh && test -f $venvwrap && source $venvwrap
+# Virtualenv stuff - check common locations
+for venvwrap in /usr/local/bin/virtualenvwrapper.sh /usr/bin/virtualenvwrapper.sh; do
+  [[ -f $venvwrap ]] && source $venvwrap && break
+done
 
 if [[ -s "$SSH_AUTH_SOCK" ]]; then
 	ln -s "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
