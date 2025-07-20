@@ -109,7 +109,7 @@ clone_external_repos() {
 
 # Stow packages
 stow_packages() {
-    local dotfiles_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local dotfiles_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
     cd "$dotfiles_dir"
     
     info "Installing dotfiles with stow..."
@@ -151,6 +151,6 @@ main() {
 }
 
 # Run if executed directly
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if [[ "${BASH_SOURCE[0]:-$0}" == "${0}" ]]; then
     main "$@"
 fi
