@@ -3,6 +3,16 @@ if [[ -s "${ZDOTDIR:-$HOME}/.config/prezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.config/prezto/init.zsh"
 fi
 
+# Auto-start ssh-agent for SSH sessions only
+if [[ -n "$SSH_CLIENT" || -n "$SSH_CONNECTION" || -n "$SSH_TTY" ]]; then
+  if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh/agent.env
+  fi
+  if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source ~/.ssh/agent.env > /dev/null
+  fi
+fi
+
 setopt autonamedirs
 unsetopt cdable_vars
 unsetopt correctall
