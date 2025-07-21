@@ -29,6 +29,7 @@ curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/master/bootst
 - **Tmux**: Terminal multiplexer configuration
 - **Vim/Neovim**: Shared configuration via symlink
 - **IPython**: Development environment setup
+- **Claude**: AI assistant memory and preferences
 
 ## Package Structure
 
@@ -40,6 +41,40 @@ Dotfiles are organized using Stow packages in the `stow/` directory:
 - `stow/vim/` - Vim configuration
 - `stow/nvim/` - Neovim (symlinks to vim)
 - `stow/ipython/` - IPython configuration
+- `stow/claude/` - Claude AI assistant memory
+
+## Updating
+
+To update your dotfiles with changes from the repository:
+
+```bash
+cd ~/.dotfiles
+
+# Check if you have local changes
+git status
+
+# If clean, pull updates
+git pull origin master
+
+# Re-stow any updated packages (or all packages)
+stow -d stow -t ~ git zsh tmux vim nvim ipython claude --verbose=2
+```
+
+**Safe update with backup:**
+
+```bash
+cd ~/.dotfiles
+
+# Only proceed if no local changes
+if git diff-index --quiet HEAD --; then
+  git pull origin master
+  stow -d stow -t ~ git zsh tmux vim nvim ipython claude --verbose=2
+  echo "Dotfiles updated successfully"
+else
+  echo "Local changes detected. Commit or stash changes first."
+  git status
+fi
+```
 
 ## Dependencies
 

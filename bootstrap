@@ -58,9 +58,20 @@ ensure_git() {
 # Clone or update dotfiles repo
 setup_dotfiles_repo() {
     if [[ -d "$DOTFILES_DIR" ]]; then
-        info "Dotfiles directory exists, updating..."
+        info "Dotfiles directory exists, checking for updates..."
         cd "$DOTFILES_DIR"
-        git pull origin master
+        
+        # Check if we have local changes
+        if ! git diff-index --quiet HEAD --; then
+            warn "Local changes detected in dotfiles repository"
+            warn "Skipping update to preserve local changes"
+            warn "To update: commit or stash changes, then re-run bootstrap"
+            git status
+            return 0
+        fi
+        
+        info "No local changes found, updating..."
+        git pull origin "$BRANCH"
     else
         info "Cloning dotfiles repository..."
         git clone --recursive -b "$BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"

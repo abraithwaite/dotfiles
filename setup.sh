@@ -118,7 +118,7 @@ stow_packages() {
     info "Installing dotfiles with stow..."
     
     # Remove any existing symlinks that might conflict
-    local packages=("git" "zsh" "tmux" "vim" "nvim" "ipython")
+    local packages=("git" "zsh" "tmux" "vim" "nvim" "ipython" "claude")
     for package in "${packages[@]}"; do
         if [[ -d "stow/$package" ]]; then
             info "Installing $package configuration..."
