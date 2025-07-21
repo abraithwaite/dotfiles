@@ -84,9 +84,12 @@ backup_existing() {
         mkdir -p "$backup_dir"
         for file in "${files_to_backup[@]}"; do
             if [[ -e "$HOME/$file" && ! -L "$HOME/$file" ]]; then
-                cp -r "$HOME/$file" "$backup_dir/" 2>/dev/null || true
+                mkdir -p "$backup_dir/$(dirname "$file")" 2>/dev/null || true
+                cp -r "$HOME/$file" "$backup_dir/$file" 2>/dev/null || true
+                rm -rf "$HOME/$file"
             fi
         done
+        info "Existing files backed up and removed for stow compatibility"
     fi
 }
 
