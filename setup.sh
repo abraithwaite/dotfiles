@@ -99,8 +99,18 @@ backup_existing() {
     )
     
     local backup_needed=false
+    local dotfiles_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+    
     for file in "${files_to_backup[@]}"; do
-        if [[ -e "$HOME/$file" && ! -L "$HOME/$file" ]]; then
+        if [[ -e "$HOME/$file" ]]; then
+            # Skip if it's already a symlink pointing to our dotfiles repo
+            if [[ -L "$HOME/$file" ]]; then
+                local target=$(readlink "$HOME/$file")
+                if [[ "$target" == *".dotfiles"* ]]; then
+                    continue
+                fi
+            fi
+            # Need to backup if it exists and isn't managed by our stow
             backup_needed=true
             break
         fi
@@ -110,7 +120,15 @@ backup_existing() {
         info "Backing up existing dotfiles to $backup_dir..."
         mkdir -p "$backup_dir"
         for file in "${files_to_backup[@]}"; do
-            if [[ -e "$HOME/$file" && ! -L "$HOME/$file" ]]; then
+            if [[ -e "$HOME/$file" ]]; then
+                # Skip if it's already a symlink pointing to our dotfiles repo
+                if [[ -L "$HOME/$file" ]]; then
+                    local target=$(readlink "$HOME/$file")
+                    if [[ "$target" == *".dotfiles"* ]]; then
+                        continue
+                    fi
+                fi
+                # Backup and remove files not managed by our stow
                 mkdir -p "$backup_dir/$(dirname "$file")" 2>/dev/null || true
                 cp -r "$HOME/$file" "$backup_dir/$file" 2>/dev/null || true
                 rm -rf "$HOME/$file"
