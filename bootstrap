@@ -16,6 +16,7 @@ error() { echo -e "${RED}[ERROR]${NC} $1"; }
 # Configuration
 DOTFILES_REPO="https://github.com/abraithwaite/dotfiles.git"
 DOTFILES_DIR="$HOME/.dotfiles"
+BRANCH="${DOTFILES_BRANCH:-stow-conversion}"  # Allow override via env var, default to stow-conversion
 
 # Detect OS
 detect_os() {
@@ -62,7 +63,7 @@ setup_dotfiles_repo() {
         git pull origin master
     else
         info "Cloning dotfiles repository..."
-        git clone --recursive "$DOTFILES_REPO" "$DOTFILES_DIR"
+        git clone --recursive -b "$BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"
     fi
 }
 
@@ -82,7 +83,7 @@ main() {
     # Run the main setup script
     info "Running dotfiles setup..."
     cd "$DOTFILES_DIR"
-    ./setup.sh
+    bash setup.sh
     
     info "Bootstrap complete! 🎉"
 }
