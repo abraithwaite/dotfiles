@@ -1,0 +1,103 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Logging functions
+info() { echo -e "${GREEN}[INFO]${NC} $1"; }
+warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+# Configuration
+DOTFILES_REPO="https://github.com/abraithwaite/dotfiles.git"
+DOTFILES_DIR="$HOME/.dotfiles"
+BRANCH="${DOTFILES_BRANCH:-stow-conversion}"  # Allow override via env var, default to stow-conversion
+
+# Detect OS
+detect_os() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "macos"
+    elif [[ -f /etc/fedora-release ]]; then
+        echo "fedora"
+    elif [[ -f /etc/os-release ]]; then
+        source /etc/os-release
+        echo "$ID"
+    else
+        echo "unknown"
+    fi
+}
+
+# Install git if not available
+ensure_git() {
+    if ! command -v git &> /dev/null; then
+        local os="$1"
+        info "Git not found, installing..."
+        case "$os" in
+            "macos")
+                xcode-select --install
+                ;;
+            "fedora")
+                sudo dnf install -y git
+                ;;
+            "ubuntu"|"debian")
+                sudo apt update && sudo apt install -y git
+                ;;
+            *)
+                error "Please install git manually and try again"
+                exit 1
+                ;;
+        esac
+    fi
+}
+
+# Clone or update dotfiles repo
+setup_dotfiles_repo() {
+    if [[ -d "$DOTFILES_DIR" ]]; then
+        info "Dotfiles directory exists, checking for updates..."
+        cd "$DOTFILES_DIR"
+        
+        # Check if we have local changes
+        if ! git diff-index --quiet HEAD --; then
+            warn "Local changes detected in dotfiles repository"
+            warn "Skipping bootstrap to preserve local changes"
+            warn "To proceed: commit or stash changes, then re-run bootstrap"
+            git status
+            exit 1
+        fi
+        
+        info "No local changes found, updating..."
+        git pull origin "$BRANCH"
+    else
+        info "Cloning dotfiles repository..."
+        git clone --recursive -b "$BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"
+    fi
+}
+
+# Main bootstrap function
+main() {
+    info "Bootstrapping dotfiles setup..."
+    
+    local os=$(detect_os)
+    info "Detected OS: $os"
+    
+    # Ensure git is available
+    ensure_git "$os"
+    
+    # Clone/update the dotfiles repo
+    setup_dotfiles_repo
+    
+    # Run the main setup script
+    info "Running dotfiles setup..."
+    cd "$DOTFILES_DIR"
+    bash setup.sh
+    
+    info "Bootstrap complete! 🎉"
+}
+
+# Run main function (always run when executed)
+main "$@"

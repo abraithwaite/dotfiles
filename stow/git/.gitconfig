@@ -1,0 +1,65 @@
+[user]
+	name = Alan Braithwaite
+	email = alan@ipaddr.org
+
+[alias]
+	in = log ..@{u}
+	out = log @{u}..
+	a = add
+	c = commit
+	b = branch
+	d = diff
+	dc = diff --cached
+	f = fetch
+	l = log
+	ls = log --pretty=format:'%C(magenta)%h%Creset %C(yellow)%aN%Creset %C(green)%aE%Creset %C(dim)%ai%Creset\n %s %C(cyan)%d%Creset'
+	m = merge
+	s = status -sb
+	st = status
+	co = "!f() { echo \"$@\" | sed -E 's#-b\\s?(\\w+)#-b alan/\\1#' | xargs git checkout ; }; f"
+	; co = checkout
+	cl = clone -o upstream
+
+[merge]
+	ff = only
+
+[core]
+	editor = vim
+	hooksPath = /dev/null
+
+[transfer]
+	fsckObjects = true
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = magenta bold
+	frag = cyan bold
+	old = red
+	new = green
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[http]
+	cookiefile = ~/.gitcookies
+[credential]
+	helper = cache --timeout=3600
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
