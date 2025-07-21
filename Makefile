@@ -47,11 +47,4 @@ uninstall:
 		fi; \
 	done
 
-# Legacy targets (kept for compatibility)
-update-subtrees:
-	git subtree pull --prefix vim https://github.com/abraithwaite/dotvim.git master --squash
-
-update-submodules:
-	git submodule update --init --recursive
-
-.PHONY: test-dry-run test-install test-clean install uninstall update-subtrees update-submodules
+.PHONY: test-dry-run test-install test-clean install uninstall
