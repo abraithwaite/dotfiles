@@ -94,7 +94,7 @@ backup_existing() {
     local backup_dir="$HOME/.dotfiles-backup-$(date +%Y%m%d-%H%M%S)"
     local files_to_backup=(
         ".gitconfig" ".zshrc" ".zshenv" ".zprofile" ".zpreztorc" 
-        ".tmux.conf" ".vimrc" ".config/nvim" ".config/prezto"
+        ".tmux.conf" ".vimrc" ".config/nvim"
         ".ipython"
     )
     
@@ -145,7 +145,7 @@ clone_external_repos() {
     # Clone prezto if not already present
     if [[ ! -d "$HOME/.config/prezto" ]]; then
         info "Cloning prezto configuration framework..."
-        git clone --recursive https://github.com/abraithwaite/prezto.git "$HOME/.config/prezto"
+        git clone --recursive -b alan-fork https://github.com/abraithwaite/prezto.git "$HOME/.config/prezto"
     fi
     
     # Clone dotvim if not already present  
