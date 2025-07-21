@@ -64,10 +64,10 @@ setup_dotfiles_repo() {
         # Check if we have local changes
         if ! git diff-index --quiet HEAD --; then
             warn "Local changes detected in dotfiles repository"
-            warn "Skipping update to preserve local changes"
-            warn "To update: commit or stash changes, then re-run bootstrap"
+            warn "Skipping bootstrap to preserve local changes"
+            warn "To proceed: commit or stash changes, then re-run bootstrap"
             git status
-            return 0
+            exit 1
         fi
         
         info "No local changes found, updating..."

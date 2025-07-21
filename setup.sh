@@ -27,28 +27,55 @@ detect_os() {
     fi
 }
 
+# Check if a command exists
+command_exists() {
+    command -v "$1" &> /dev/null
+}
+
 # Install packages based on OS
 install_dependencies() {
     local os="$1"
+    local packages=("stow" "git" "neovim" "tmux" "bat" "curl" "zsh")
+    local missing_packages=()
+    
+    # Check which packages are missing
+    for package in "${packages[@]}"; do
+        local cmd="$package"
+        # Some packages have different command names
+        case "$package" in
+            "neovim") cmd="nvim" ;;
+        esac
+        
+        if ! command_exists "$cmd"; then
+            missing_packages+=("$package")
+        fi
+    done
+    
+    if [[ ${#missing_packages[@]} -eq 0 ]]; then
+        info "All dependencies already installed"
+        return 0
+    fi
+    
+    info "Missing packages: ${missing_packages[*]}"
     info "Installing dependencies for $os..."
     
     case "$os" in
         "macos")
-            if ! command -v brew &> /dev/null; then
+            if ! command_exists brew; then
                 info "Installing Homebrew..."
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             fi
-            brew install stow git neovim tmux bat curl zsh
+            brew install "${missing_packages[@]}"
             ;;
         "fedora")
-            sudo dnf install -y stow git neovim tmux bat curl zsh
+            sudo dnf install -y "${missing_packages[@]}"
             ;;
         "ubuntu"|"debian")
             sudo apt update
-            sudo apt install -y stow git neovim tmux bat curl zsh
+            sudo apt install -y "${missing_packages[@]}"
             ;;
         *)
-            warn "Unknown OS: $os. Please install stow, git, neovim, tmux, bat, curl, and zsh manually."
+            warn "Unknown OS: $os. Please install these packages manually: ${missing_packages[*]}"
             ;;
     esac
 }
