@@ -16,7 +16,7 @@ error() { echo -e "${RED}[ERROR]${NC} $1"; }
 # Configuration
 DOTFILES_REPO="https://github.com/abraithwaite/dotfiles.git"
 DOTFILES_DIR="$HOME/.dotfiles"
-BRANCH="${DOTFILES_BRANCH:-stow-conversion}"  # Allow override via env var, default to stow-conversion
+BRANCH="${DOTFILES_BRANCH:-main}"  # Allow override via env var, default to stow-conversion
 
 # Detect OS
 detect_os() {

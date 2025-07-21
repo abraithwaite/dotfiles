@@ -71,8 +71,3 @@ The setup automatically clones:
 
 ### Backup Strategy
 The setup script automatically backs up existing dotfiles to `~/.dotfiles-backup-<timestamp>/` before stowing new configurations.
-
-## Branch Information
-- Main development branch: `stow-conversion`
-- Production branch: `main`
-- Bootstrap script defaults to `stow-conversion` branch (configurable via `DOTFILES_BRANCH` env var)
