@@ -7,7 +7,7 @@ Modern dotfiles management using [GNU Stow](https://www.gnu.org/software/stow/).
 One-line install:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/master/bootstrap | bash
+curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/main/bootstrap | bash
 ```
 
 ## Manual Setup
@@ -54,7 +54,7 @@ cd ~/.dotfiles
 git status
 
 # If clean, pull updates
-git pull origin master
+git pull origin main
 
 # Re-stow any updated packages (or all packages)
 stow -d stow -t ~ git zsh tmux vim nvim ipython claude --verbose=2
@@ -67,7 +67,7 @@ cd ~/.dotfiles
 
 # Only proceed if no local changes
 if git diff-index --quiet HEAD --; then
-  git pull origin master
+  git pull origin main
   stow -d stow -t ~ git zsh tmux vim nvim ipython claude --verbose=2
   echo "Dotfiles updated successfully"
 else
@@ -91,13 +91,13 @@ Test on Fedora or Ubuntu without affecting your system:
 # Test on Fedora
 docker run -it --rm fedora:latest bash -c "
   dnf install -y curl git && 
-  curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/master/bootstrap | bash
+  curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/main/bootstrap | bash
 "
 
 # Test on Ubuntu  
 docker run -it --rm ubuntu:latest bash -c "
   apt update && apt install -y curl git &&
-  curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/master/bootstrap | bash
+  curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/main/bootstrap | bash
 "
 ```
 

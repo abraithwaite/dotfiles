@@ -11,7 +11,7 @@ This is a modern dotfiles repository using GNU Stow for symlink management. It w
 ### Bootstrap Installation
 ```bash
 # One-line install from remote
-curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/master/bootstrap | bash
+curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/main/bootstrap | bash
 
 # Manual installation
 cd ~/.dotfiles && ./setup.sh
@@ -22,7 +22,7 @@ cd ~/.dotfiles && ./setup.sh
 # Docker testing on Fedora
 docker run -it --rm fedora:latest bash -c "
   dnf install -y curl git && 
-  curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/master/bootstrap | bash
+  curl -fsSL https://raw.githubusercontent.com/abraithwaite/dotfiles/main/bootstrap | bash
 "
 
 # Test individual stow packages (dry run)
@@ -74,5 +74,5 @@ The setup script automatically backs up existing dotfiles to `~/.dotfiles-backup
 
 ## Branch Information
 - Main development branch: `stow-conversion`
-- Production branch: `master`
+- Production branch: `main`
 - Bootstrap script defaults to `stow-conversion` branch (configurable via `DOTFILES_BRANCH` env var)
